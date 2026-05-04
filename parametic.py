@@ -15,17 +15,30 @@ scene.visuals.Markers(pos=stars_xyz, size=star_sizes,
 
 # --- Torus of colored points ---
 n = 8000
-u = np.random.uniform(0, 2 * np.pi, n)  # around the tube
-v = np.random.uniform(0, 2 * np.pi, n)  # around the ring
-R, r = 1.5, 0.5                          # major / minor radius
+# --- Torus of colored points (structured grid instead of random) ---
+n_u = 120
+n_v = 80
+
+u_vals = np.linspace(0, 2 * np.pi, n_u)
+v_vals = np.linspace(0, 2 * np.pi, n_v)
+
+u, v = np.meshgrid(u_vals, v_vals)
+u = u.ravel()
+v = v.ravel()
+
+R, r = 1.5, 0.5
 
 x = (R + r * np.cos(v)) * np.cos(u)
 y = (R + r * np.cos(v)) * np.sin(u)
 z = r * np.sin(v)
+
 torus_pts = np.column_stack([x, y, z])
 
 # Color by angle around the ring
 hue = (u / (2 * np.pi))
+
+n = u.size  # IMPORTANT: matches meshgrid output
+
 colors = np.zeros((n, 4))
 colors[:, 0] = np.abs(np.sin(hue * np.pi))        # R
 colors[:, 1] = np.abs(np.sin(hue * np.pi + 2.1))  # G
