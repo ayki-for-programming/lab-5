@@ -14,7 +14,7 @@ view.camera = scene.TurntableCamera(fov=60, distance=8, elevation=15)
 N = 4000
 
 pos = (np.random.randn(N, 3) * 0.1).astype(np.float32)
-vel = (np.random.randn(N, 3) * 0.03).astype(np.float32)  # faster
+vel = np.random.randn(N, 3) * 0.005  # faster
 
 # Color by speed
 speed = np.linalg.norm(vel, axis=1)
@@ -49,8 +49,8 @@ def on_timer(event):
     pos[:, 1] = sin_t * x + cos_t * y
 
     # wrap
-    mask = np.abs(pos) > 5
-    pos[mask] *= -0.5
+    #mask = np.abs(pos) > 5
+    #pos[mask] *= -0.5
 
     # update GPU
     markers.set_data(pos=pos, face_color=colors, size=3)
