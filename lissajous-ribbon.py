@@ -64,7 +64,7 @@ fog_colors[:, 3] = 0.03  # very faint fog
 
 fog_markers = scene.visuals.Markers(
     pos=fog,
-    size=2,
+    size=4,
     face_color=fog_colors,
     edge_width=0,
     parent=view.scene
