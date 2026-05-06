@@ -19,9 +19,9 @@ n = 4000
 t = np.linspace(0, 2 * np.pi, n)
 
 # A, B, C
-a = 3
-b = 4
-c = 5
+a = 2
+b = 3
+c = 7
 
 base = np.column_stack([
     np.sin(a * t + np.pi/4),
