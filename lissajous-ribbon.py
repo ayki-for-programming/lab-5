@@ -4,7 +4,7 @@ import numpy as np
 
 canvas = scene.SceneCanvas(
     title='Nebula Ribbon (Volumetric)',
-    bgcolor='#000005',
+    bgcolor="#76203B",
     size=(1000, 700),
     show=True
 )
